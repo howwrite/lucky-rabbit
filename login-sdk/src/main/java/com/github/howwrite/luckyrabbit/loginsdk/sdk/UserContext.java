@@ -1,4 +1,4 @@
-package com.github.howwrite.luckyrabbit.loginsdk;
+package com.github.howwrite.luckyrabbit.loginsdk.sdk;
 
 /**
  * @author howwrite
