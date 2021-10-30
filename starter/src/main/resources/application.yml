@@ -1,0 +1,10 @@
+spring:
+  redis:
+    redisson:
+      file: classpath:redisson-config.yaml
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/${LUCKY_RABBIT_DB_NAME:lucky_rabbit}?useUnicode=true&characterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: ${MYSQL_PASSWORD}
+    username: ${MYSQL_USERNAME:root}
+    type: com.alibaba.druid.pool.DruidDataSource

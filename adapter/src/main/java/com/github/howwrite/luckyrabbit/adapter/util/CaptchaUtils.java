@@ -11,7 +11,7 @@ import java.io.ByteArrayOutputStream;
  * @author howwrite
  * @date 2021/10/11 10:48 下午
  */
-public class CaptchaUtil {
+public class CaptchaUtils {
     public static String generateCaptchaBase64Str(int width, int height, String code) {
         CircleCaptcha captchaInstance = new CircleCaptcha(width, height);
         Image image = captchaInstance.createImage(code);

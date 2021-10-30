@@ -1,7 +1,7 @@
 package com.github.howwrite.luckyrabbit.adapter.controller;
 
 import com.github.howwrite.luckyrabbit.adapter.config.AdapterProperties;
-import com.github.howwrite.luckyrabbit.adapter.util.CaptchaUtil;
+import com.github.howwrite.luckyrabbit.adapter.util.CaptchaUtils;
 import com.github.howwrite.luckyrabbit.api.facade.CaptchaFacade;
 import com.github.howwrite.luckyrabbit.api.request.GenerateCaptchaRequest;
 import com.github.howwrite.luckyrabbit.api.response.GenerateCaptchaInfo;
@@ -31,6 +31,6 @@ public class CaptchaController {
         String sessionId = request.getRequestedSessionId();
         Response<GenerateCaptchaInfo> captchaResponse = captchaFacade.generateCaptcha(new GenerateCaptchaRequest(sessionId));
         GenerateCaptchaInfo captchaInfo = WebResultUtil.resultOrThrow(captchaResponse);
-        return BASE64_PREFIX + CaptchaUtil.generateCaptchaBase64Str(adapterProperties.getCaptchaWidth(), adapterProperties.getCaptchaHeight(), captchaInfo.getCaptchaCode());
+        return BASE64_PREFIX + CaptchaUtils.generateCaptchaBase64Str(adapterProperties.getCaptchaWidth(), adapterProperties.getCaptchaHeight(), captchaInfo.getCaptchaBody());
     }
 }

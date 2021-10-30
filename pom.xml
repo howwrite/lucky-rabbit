@@ -26,6 +26,9 @@
     <properties>
         <treasure-bag.version>1.0-SNAPSHOT</treasure-bag.version>
         <mybatis-starter.version>2.2.0</mybatis-starter.version>
+        <redisson-spring.version>3.16.3</redisson-spring.version>
+        <druid-version>1.2.8</druid-version>
+        <mysql-connector.version>8.0.27</mysql-connector.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -66,6 +69,11 @@
             </dependency>
             <dependency>
                 <groupId>com.github.howwrite</groupId>
+                <artifactId>properties-helper</artifactId>
+                <version>${treasure-bag.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.howwrite</groupId>
                 <artifactId>treasure-domain</artifactId>
                 <version>${treasure-bag.version}</version>
             </dependency>
@@ -88,6 +96,21 @@
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson-spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
