@@ -13,7 +13,7 @@ import java.io.ByteArrayOutputStream;
  */
 public class CaptchaUtils {
     public static String generateCaptchaBase64Str(int width, int height, String code) {
-        CircleCaptcha captchaInstance = new CircleCaptcha(width, height);
+        CircleCaptcha captchaInstance = new CircleCaptcha(width, height, code.length());
         Image image = captchaInstance.createImage(code);
 
         final ByteArrayOutputStream out = new ByteArrayOutputStream();

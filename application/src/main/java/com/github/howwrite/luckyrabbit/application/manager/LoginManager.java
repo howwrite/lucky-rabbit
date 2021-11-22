@@ -1,4 +1,4 @@
-package com.github.howwrite.luckyrabbit.application.manage;
+package com.github.howwrite.luckyrabbit.application.manager;
 
 import org.springframework.stereotype.Component;
 
@@ -7,5 +7,5 @@ import org.springframework.stereotype.Component;
  * @date 2021/10/10 11:24 上午
  */
 @Component
-public class LoginManage {
+public class LoginManager {
 }

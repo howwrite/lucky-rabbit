@@ -10,12 +10,4 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 @ConfigurationProperties(prefix = "lucky-rabbit.adapter")
 public class AdapterProperties {
-    /**
-     * 图形验证码宽度
-     */
-    private int captchaWidth  = 300;
-    /**
-     * 图形验证码高度
-     */
-    private int captchaHeight = 150;
 }

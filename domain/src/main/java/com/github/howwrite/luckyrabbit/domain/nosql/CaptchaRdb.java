@@ -1,5 +1,6 @@
 package com.github.howwrite.luckyrabbit.domain.nosql;
 
+import com.github.howwrite.treasure.common.exception.ServerBizException;
 import lombok.RequiredArgsConstructor;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
@@ -14,8 +15,17 @@ public class CaptchaRdb {
     private final RedissonClient redissonClient;
 
     public boolean bindCaptcha(String sessionId, String token, String captchaBody, long minuteToLive) {
-        RBucket<Object> bucket = redissonClient.getBucket(captchaDbName + sessionId + token);
+        RBucket<String> bucket = redissonClient.getBucket(captchaDbName + sessionId + token);
         bucket.set(captchaBody, minuteToLive, TimeUnit.MINUTES);
         return true;
+    }
+
+    public boolean verifyCaptcha(String sessionId, String token, String captcha) {
+        RBucket<String> bucket = redissonClient.getBucket(captchaDbName + sessionId + token);
+        String realCaptcha = bucket.get();
+        if (realCaptcha == null || !realCaptcha.equals(captcha)) {
+            throw new ServerBizException("验证码错误，请重试或者更新验证码");
+        }
+        return bucket.delete();
     }
 }

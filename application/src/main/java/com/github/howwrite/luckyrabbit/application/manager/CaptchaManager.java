@@ -1,11 +1,12 @@
-package com.github.howwrite.luckyrabbit.application.manage;
+package com.github.howwrite.luckyrabbit.application.manager;
 
 import cn.hutool.core.util.RandomUtil;
 import com.github.howwrite.luckyrabbit.api.request.GenerateCaptchaRequest;
+import com.github.howwrite.luckyrabbit.api.request.VerifyCaptchaCodeRequest;
 import com.github.howwrite.luckyrabbit.api.response.GenerateCaptchaInfo;
 import com.github.howwrite.luckyrabbit.application.config.AppProperties;
 import com.github.howwrite.luckyrabbit.domain.nosql.CaptchaRdb;
-import com.github.howwrite.treasure.server.exception.ServerBizException;
+import com.github.howwrite.treasure.common.exception.ServerBizException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @RequiredArgsConstructor
-public class CaptchaManage {
+public class CaptchaManager {
     private final CaptchaRdb captchaRdb;
     private final AppProperties appProperties;
 
@@ -30,5 +31,9 @@ public class CaptchaManage {
             throw new ServerBizException("获取图片验证码失败");
         }
         return new GenerateCaptchaInfo(captchaToken, captchaBody);
+    }
+
+    public boolean verifyCaptchaCode(VerifyCaptchaCodeRequest request) {
+        return captchaRdb.verifyCaptcha(request.getSessionId(), request.getCaptchaToken(), request.getCaptchaCode());
     }
 }

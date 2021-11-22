@@ -11,28 +11,28 @@ import javax.validation.constraints.NotNull;
 
 /**
  * @author howwrite
- * @date 2021/10/12 8:42 上午
+ * @date 2021/11/22
  */
 @AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class GenerateCaptchaRequest extends AbstractRequest {
-    private static final long serialVersionUID = 4809409092045004454L;
+@NoArgsConstructor
+public class VerifyCaptchaCodeRequest extends AbstractRequest {
+    private static final long serialVersionUID = -975305081864426417L;
+    private String captchaCode;
     private String sessionId;
-    private Integer width;
-    private Integer height;
-
-    @Override
-    public @NotNull String callIntroduction() {
-        return "生成图形验证码";
-    }
+    private String captchaToken;
 
     @Override
     public void checkParam() {
         super.checkParam();
-        ParameterUtils.notNull("验证码宽度不可为空", width);
-        ParameterUtils.notNull("验证码高度不可为空", height);
+        ParameterUtils.notBlank("验证码不可为空", captchaCode);
         ParameterUtils.notBlank("非法校验请求", sessionId);
+        ParameterUtils.notBlank("请获取验证码", captchaToken);
+    }
+
+    @Override
+    public @NotNull String callIntroduction() {
+        return "校验图形验证码";
     }
 }

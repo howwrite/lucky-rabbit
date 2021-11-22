@@ -1,10 +1,8 @@
 package com.github.howwrite.luckyrabbit.api.request;
 
 import com.github.howwrite.luckyrabbit.api.constant.UserErrorCode;
-import com.github.howwrite.luckyrabbit.api.constant.UserOperationType;
-import com.github.howwrite.treasure.api.constant.OperationType;
 import com.github.howwrite.treasure.api.request.AbstractRequest;
-import com.github.howwrite.treasure.util.ParameterUtils;
+import com.github.howwrite.treasure.common.util.ParameterUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -42,7 +40,7 @@ public class RegisterUserRequest extends AbstractRequest {
     }
 
     @Override
-    public @NotNull OperationType callOperationType() {
-        return UserOperationType.REGISTER_USER;
+    public @NotNull String callIntroduction() {
+        return "用户注册";
     }
 }

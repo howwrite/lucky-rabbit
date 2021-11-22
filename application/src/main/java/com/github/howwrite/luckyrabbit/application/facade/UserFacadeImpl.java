@@ -3,7 +3,7 @@ package com.github.howwrite.luckyrabbit.application.facade;
 import com.github.howwrite.luckyrabbit.api.facade.UserFacade;
 import com.github.howwrite.luckyrabbit.api.request.RegisterUserRequest;
 import com.github.howwrite.luckyrabbit.api.response.LoginInfo;
-import com.github.howwrite.luckyrabbit.application.manage.UserManage;
+import com.github.howwrite.luckyrabbit.application.manager.UserManager;
 import com.github.howwrite.treasure.api.response.Response;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -15,11 +15,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Component
 public class UserFacadeImpl implements UserFacade {
-    private UserManage userManage;
+    private final UserManager userManager;
 
     @Override
     public Response<LoginInfo> register(RegisterUserRequest request) {
-        return Response.ok(userManage.register(request));
+        return Response.ok(userManager.register(request));
     }
 
     @Override

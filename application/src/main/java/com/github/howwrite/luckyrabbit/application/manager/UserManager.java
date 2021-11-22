@@ -1,4 +1,4 @@
-package com.github.howwrite.luckyrabbit.application.manage;
+package com.github.howwrite.luckyrabbit.application.manager;
 
 import com.github.howwrite.luckyrabbit.api.request.RegisterUserRequest;
 import com.github.howwrite.luckyrabbit.api.response.LoginInfo;
@@ -13,9 +13,9 @@ import javax.annotation.Resource;
  */
 @RequiredArgsConstructor
 @Component
-public class UserManage {
+public class UserManager {
     @Resource
-    private LoginManage loginManage;
+    private LoginManager loginManager;
 
     public LoginInfo register(RegisterUserRequest request) {
         // todo
