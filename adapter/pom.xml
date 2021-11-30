@@ -28,5 +28,9 @@
             <groupId>com.github.howwrite.luckyrabbit</groupId>
             <artifactId>api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.howwrite.luckyrabbit</groupId>
+            <artifactId>login-sdk</artifactId>
+        </dependency>
     </dependencies>
 </project>

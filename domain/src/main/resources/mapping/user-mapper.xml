@@ -5,6 +5,7 @@
 <mapper namespace="com.github.howwrite.luckyrabbit.domain.mapper.UserMapper">
     <resultMap type="com.github.howwrite.luckyrabbit.domain.dataobject.UserDO" id="ResultMap">
         <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="prefix" column="prefix" jdbcType="VARCHAR"/>
         <result property="mobile" column="mobile" jdbcType="VARCHAR"/>
         <result property="password" column="password" jdbcType="VARCHAR"/>
         <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
@@ -15,7 +16,7 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id,mobile,`password`,nickname,deleted,deleted_time,created_time,updated_time
+        id,prefix,mobile,`password`,nickname,deleted,deleted_time,created_time,updated_time
     </sql>
 
     <sql id="tb">
@@ -26,6 +27,7 @@
         <where>
             deleted = 0
             <if test="id != null">and id = #{id}</if>
+            <if test="prefix != null">and prefix = #{prefix}</if>
             <if test="mobile != null">and mobile = #{mobile}</if>
             <if test="nickname != null">and nickname = #{nickname}</if>
         </where>
@@ -33,18 +35,24 @@
 
     <sql id="insertColumn">
         <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="prefix != null">
+                `prefix`,
+            </if>
             <if test="mobile != null">
-                mobile,
+                `mobile`,
             </if>
             <if test="password != null">
                 `password`,
             </if>
             <if test="nickname != null">
-                nickname,
+                `nickname`,
             </if>
-            ,created_time,updated_time
+            `created_time`,`updated_time`
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="prefix != null">
+                #{prefix},
+            </if>
             <if test="mobile != null">
                 #{mobile},
             </if>
@@ -54,7 +62,7 @@
             <if test="nickname != null">
                 #{nickname},
             </if>
-            ,now(),now()
+            now(),now()
         </trim>
     </sql>
 
@@ -76,8 +84,15 @@
         <include refid="tb"/>
         <include refid="criteria"/>
     </select>
+    <select id="findByMobile" resultMap="ResultMap">
+        select
+        <include refid="baseColumn"/>
+        from
+        <include refid="tb"/>
+        where `prefix` = #{param1} and `mobile` = #{param2} limit 1
+    </select>
 
-    <insert id="insert" parameterType="com.github.howwrite.luckyrabbit.domain.queryobject.UserQueryParam"
+    <insert id="insert" parameterType="com.github.howwrite.luckyrabbit.domain.dataobject.UserDO"
             useGeneratedKeys="true"
             keyProperty="id" keyColumn="id">
         insert into

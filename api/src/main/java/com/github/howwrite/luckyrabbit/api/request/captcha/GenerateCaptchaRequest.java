@@ -1,4 +1,4 @@
-package com.github.howwrite.luckyrabbit.api.request;
+package com.github.howwrite.luckyrabbit.api.request.captcha;
 
 import com.github.howwrite.treasure.api.request.AbstractRequest;
 import com.github.howwrite.treasure.common.util.ParameterUtils;
@@ -6,8 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import javax.validation.constraints.NotNull;
 
 /**
  * @author howwrite
@@ -23,10 +21,6 @@ public class GenerateCaptchaRequest extends AbstractRequest {
     private Integer width;
     private Integer height;
 
-    @Override
-    public @NotNull String callIntroduction() {
-        return "生成图形验证码";
-    }
 
     @Override
     public void checkParam() {

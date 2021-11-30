@@ -1,12 +1,10 @@
-package com.github.howwrite.luckyrabbit.api.request;
+package com.github.howwrite.luckyrabbit.api.request.register;
 
 import com.github.howwrite.luckyrabbit.api.constant.UserErrorCode;
 import com.github.howwrite.treasure.api.request.AbstractRequest;
 import com.github.howwrite.treasure.common.util.ParameterUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import javax.validation.constraints.NotNull;
 
 /**
  * @author howwrite
@@ -39,8 +37,4 @@ public class RegisterUserRequest extends AbstractRequest {
         ParameterUtils.notBlank(UserErrorCode.MOBILE_CAN_NOT_BE_EMPTY, mobile);
     }
 
-    @Override
-    public @NotNull String callIntroduction() {
-        return "用户注册";
-    }
 }

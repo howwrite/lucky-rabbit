@@ -11,17 +11,21 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class UserDO extends AbstractDO<Long> {
-    private static final long   serialVersionUID = -5928709396881136757L;
+    private static final long serialVersionUID = -5928709396881136757L;
     /**
      * 手机号
      */
-    private              String mobile;
+    private String mobile;
+    /**
+     * 手机号前缀
+     */
+    private String prefix;
     /**
      * 密码
      */
-    private              String password;
+    private String password;
     /**
      * 昵称
      */
-    private              String nickname;
+    private String nickname;
 }

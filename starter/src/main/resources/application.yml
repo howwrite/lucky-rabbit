@@ -8,3 +8,5 @@ spring:
     password: ${MYSQL_PASSWORD}
     username: ${MYSQL_USERNAME:root}
     type: com.alibaba.druid.pool.DruidDataSource
+mybatis:
+  mapper-locations: classpath:mapping/*mapper.xml

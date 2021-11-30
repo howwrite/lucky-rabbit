@@ -1,9 +1,9 @@
 package com.github.howwrite.luckyrabbit.application.facade;
 
 import com.github.howwrite.luckyrabbit.api.facade.CaptchaFacade;
-import com.github.howwrite.luckyrabbit.api.request.GenerateCaptchaRequest;
-import com.github.howwrite.luckyrabbit.api.request.VerifyCaptchaCodeRequest;
-import com.github.howwrite.luckyrabbit.api.response.GenerateCaptchaInfo;
+import com.github.howwrite.luckyrabbit.api.request.captcha.GenerateCaptchaRequest;
+import com.github.howwrite.luckyrabbit.api.request.captcha.VerifyCaptchaCodeRequest;
+import com.github.howwrite.luckyrabbit.api.response.captcha.GenerateCaptchaInfo;
 import com.github.howwrite.luckyrabbit.application.manager.CaptchaManager;
 import com.github.howwrite.treasure.api.response.Response;
 import lombok.RequiredArgsConstructor;

@@ -1,5 +1,6 @@
 package com.github.howwrite.luckyrabbit.domain.mapper;
 
+import com.github.howwrite.luckyrabbit.domain.dataobject.UserDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -8,4 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserMapper {
+    void insert(UserDO userDO);
+
+    UserDO findByMobile(String prefix, String mobile);
 }

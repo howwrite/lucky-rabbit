@@ -1,4 +1,4 @@
-package com.github.howwrite.luckyrabbit.api.response;
+package com.github.howwrite.luckyrabbit.api.response.captcha;
 
 import com.github.howwrite.treasure.api.response.AbstractInfo;
 import lombok.AllArgsConstructor;

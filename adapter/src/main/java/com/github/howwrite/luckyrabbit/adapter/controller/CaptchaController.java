@@ -2,10 +2,10 @@ package com.github.howwrite.luckyrabbit.adapter.controller;
 
 import com.github.howwrite.luckyrabbit.adapter.util.CaptchaUtils;
 import com.github.howwrite.luckyrabbit.api.facade.CaptchaFacade;
-import com.github.howwrite.luckyrabbit.api.request.GenerateCaptchaRequest;
-import com.github.howwrite.luckyrabbit.api.request.VerifyCaptchaCodeRequest;
-import com.github.howwrite.luckyrabbit.api.response.CaptchaInfo;
-import com.github.howwrite.luckyrabbit.api.response.GenerateCaptchaInfo;
+import com.github.howwrite.luckyrabbit.api.request.captcha.GenerateCaptchaRequest;
+import com.github.howwrite.luckyrabbit.api.request.captcha.VerifyCaptchaCodeRequest;
+import com.github.howwrite.luckyrabbit.api.response.captcha.CaptchaInfo;
+import com.github.howwrite.luckyrabbit.api.response.captcha.GenerateCaptchaInfo;
 import com.github.howwrite.treasure.api.response.Response;
 import com.github.howwrite.treasure.web.util.WebResultUtil;
 import lombok.RequiredArgsConstructor;

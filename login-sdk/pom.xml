@@ -11,4 +11,26 @@
 
     <artifactId>login-sdk</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.howwrite</groupId>
+            <artifactId>treasure-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.howwrite</groupId>
+            <artifactId>properties-helper</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.howwrite.luckyrabbit</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+    </dependencies>
 </project>
