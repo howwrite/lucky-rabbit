@@ -25,8 +25,8 @@ public class GenerateCaptchaRequest extends AbstractRequest {
     @Override
     public void checkParam() {
         super.checkParam();
-        ParameterUtils.notNull("验证码宽度不可为空", width);
-        ParameterUtils.notNull("验证码高度不可为空", height);
-        ParameterUtils.notBlank("非法校验请求", sessionId);
+        ParameterUtils.notNull("验证码宽度不可为空", width)
+                .notNull("验证码高度不可为空", height)
+                .notBlank("非法校验请求", sessionId);
     }
 }

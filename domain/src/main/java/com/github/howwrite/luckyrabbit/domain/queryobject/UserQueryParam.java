@@ -12,7 +12,8 @@ import java.io.Serializable;
  */
 @Data
 public class UserQueryParam implements Serializable {
-    private Long   id;
+    private static final long serialVersionUID = -6422534039015997754L;
+    private Long id;
     private String mobile;
     private String nickname;
 }

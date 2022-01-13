@@ -2,7 +2,6 @@ package com.github.howwrite.luckyrabbit.application.manager;
 
 import cn.hutool.core.util.RandomUtil;
 import com.github.howwrite.luckyrabbit.api.request.captcha.GenerateCaptchaRequest;
-import com.github.howwrite.luckyrabbit.api.request.captcha.VerifyCaptchaCodeRequest;
 import com.github.howwrite.luckyrabbit.api.response.captcha.GenerateCaptchaInfo;
 import com.github.howwrite.luckyrabbit.application.config.AppProperties;
 import com.github.howwrite.luckyrabbit.domain.nosql.CaptchaRdb;
@@ -33,7 +32,7 @@ public class CaptchaManager {
         return new GenerateCaptchaInfo(captchaToken, captchaBody);
     }
 
-    public boolean verifyCaptchaCode(VerifyCaptchaCodeRequest request) {
-        return captchaRdb.verifyCaptcha(request.getSessionId(), request.getCaptchaToken(), request.getCaptchaCode());
+    public boolean verifyCaptchaCode(String sessionId, String token, String captcha) {
+        return captchaRdb.verifyCaptcha(sessionId, token, captcha);
     }
 }

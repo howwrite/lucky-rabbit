@@ -10,9 +10,9 @@
         <result property="password" column="password" jdbcType="VARCHAR"/>
         <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
         <result property="deleted" column="deleted" jdbcType="BIGINT"/>
-        <result property="deletedTime" column="deleted_time" jdbcType="TIMESTAMP"/>
-        <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/>
-        <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/>
+        <result property="deletedTime" column="deleted_time" jdbcType="BIGINT"/>
+        <result property="createdTime" column="created_time" jdbcType="BIGINT"/>
+        <result property="updatedTime" column="updated_time" jdbcType="BIGINT"/>
     </resultMap>
 
     <sql id="baseColumn">
@@ -62,7 +62,7 @@
             <if test="nickname != null">
                 #{nickname},
             </if>
-            now(),now()
+            UNIX_TIMESTAMP(),UNIX_TIMESTAMP()
         </trim>
     </sql>
 

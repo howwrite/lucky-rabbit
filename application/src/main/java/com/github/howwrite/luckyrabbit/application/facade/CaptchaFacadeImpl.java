@@ -2,7 +2,6 @@ package com.github.howwrite.luckyrabbit.application.facade;
 
 import com.github.howwrite.luckyrabbit.api.facade.CaptchaFacade;
 import com.github.howwrite.luckyrabbit.api.request.captcha.GenerateCaptchaRequest;
-import com.github.howwrite.luckyrabbit.api.request.captcha.VerifyCaptchaCodeRequest;
 import com.github.howwrite.luckyrabbit.api.response.captcha.GenerateCaptchaInfo;
 import com.github.howwrite.luckyrabbit.application.manager.CaptchaManager;
 import com.github.howwrite.treasure.api.response.Response;
@@ -22,10 +21,4 @@ public class CaptchaFacadeImpl implements CaptchaFacade {
     public Response<GenerateCaptchaInfo> generateCaptcha(GenerateCaptchaRequest request) {
         return Response.ok(captchaManager.generateCaptcha(request));
     }
-
-    @Override
-    public Response<Boolean> verifyCaptchaCode(VerifyCaptchaCodeRequest request) {
-        return Response.ok(captchaManager.verifyCaptchaCode(request));
-    }
-
 }

@@ -22,9 +22,9 @@ public class LoginBySmsCodeRequest extends AbstractRequest {
     @Override
     public void checkParam() {
         super.checkParam();
-        ParameterUtils.notBlank("手机号格式有误", prefix);
-        ParameterUtils.notBlank("手机号不可为空", mobile);
-        ParameterUtils.notBlank("请输入短信验证码", smsCode);
-        ParameterUtils.notBlank("非法请求", sessionId);
+        ParameterUtils.notBlank("手机号格式有误", prefix)
+                .notBlank("手机号不可为空", mobile)
+                .notBlank("请输入短信验证码", smsCode)
+                .notBlank("非法请求", sessionId);
     }
 }

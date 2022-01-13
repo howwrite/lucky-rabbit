@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+
 /**
  * @author howwrite
  * @date 2021/11/23
@@ -19,8 +21,15 @@ import org.springframework.stereotype.Component;
 public class SmsCodeManager {
     private final SmsCodeRdb smsCodeRdb;
     private final AppProperties appProperties;
+    @Resource
+    private CaptchaManager captchaManager;
 
     public Boolean sendSmsCode(SendSmsCodeRequest request) {
+        // 校验图形验证码
+        boolean verifyResult = captchaManager.verifyCaptchaCode(request.getSessionId(), request.getCaptchaToken(), request.getCaptcha());
+        if (!verifyResult) {
+            throw new ServerBizException("验证码错误，请重试或者更新验证码");
+        }
         // 生成验证码
         String smsCode = genSmsCode(request.getSessionId(), request.getPrefix(), request.getMobile(), request.getScene().name());
         log.info("generate sms code success, smsCode:{}", smsCode);

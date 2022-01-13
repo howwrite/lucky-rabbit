@@ -24,8 +24,8 @@ public class VerifyCaptchaCodeRequest extends AbstractRequest {
     @Override
     public void checkParam() {
         super.checkParam();
-        ParameterUtils.notBlank("验证码不可为空", captchaCode);
-        ParameterUtils.notBlank("非法校验请求", sessionId);
-        ParameterUtils.notBlank("请获取验证码", captchaToken);
+        ParameterUtils.notBlank("验证码不可为空", captchaCode)
+                .notBlank("非法校验请求", sessionId)
+                .notBlank("请获取验证码", captchaToken);
     }
 }

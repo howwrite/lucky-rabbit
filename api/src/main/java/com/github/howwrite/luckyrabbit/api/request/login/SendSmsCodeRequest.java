@@ -21,6 +21,8 @@ public class SendSmsCodeRequest extends AbstractRequest {
     private String prefix;
     private String mobile;
     private String sessionId;
+    private String captcha;
+    private String captchaToken;
     /**
      * 短信验证码场景
      */
@@ -29,9 +31,13 @@ public class SendSmsCodeRequest extends AbstractRequest {
     @Override
     public void checkParam() {
         super.checkParam();
-        ParameterUtils.notBlank("手机号不能为空", mobile);
-        ParameterUtils.notBlank("手机号不合法", prefix);
-        ParameterUtils.notNull("非法请求", scene);
-        ParameterUtils.notBlank("非法请求", sessionId);
+        ParameterUtils
+                .notBlank("手机号不能为空", mobile)
+                .notBlank("手机号不合法", prefix)
+                .notNull("非法请求", scene)
+                .notBlank("非法请求", sessionId)
+                .notBlank("请输入验证码", captcha)
+                .notBlank("请重新刷新验证码", captchaToken);
+
     }
 }

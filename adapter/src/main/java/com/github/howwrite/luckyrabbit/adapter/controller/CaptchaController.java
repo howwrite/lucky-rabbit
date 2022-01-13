@@ -3,7 +3,6 @@ package com.github.howwrite.luckyrabbit.adapter.controller;
 import com.github.howwrite.luckyrabbit.adapter.util.CaptchaUtils;
 import com.github.howwrite.luckyrabbit.api.facade.CaptchaFacade;
 import com.github.howwrite.luckyrabbit.api.request.captcha.GenerateCaptchaRequest;
-import com.github.howwrite.luckyrabbit.api.request.captcha.VerifyCaptchaCodeRequest;
 import com.github.howwrite.luckyrabbit.api.response.captcha.CaptchaInfo;
 import com.github.howwrite.luckyrabbit.api.response.captcha.GenerateCaptchaInfo;
 import com.github.howwrite.treasure.api.response.Response;
@@ -39,12 +38,5 @@ public class CaptchaController {
         GenerateCaptchaInfo captchaInfo = WebResultUtil.resultOrThrow(captchaResponse);
         String imageBody = BASE64_PREFIX + CaptchaUtils.generateCaptchaBase64Str(generateCaptchaRequest.getWidth(), generateCaptchaRequest.getHeight(), captchaInfo.getCaptchaBody());
         return new CaptchaInfo(imageBody, captchaInfo.getCaptchaToken());
-    }
-
-    @GetMapping("/verify")
-    public Boolean verifyCaptcha(HttpServletRequest request, @RequestParam String captchaToken, @RequestParam String captcha) {
-        return WebResultUtil.resultOrThrow(
-                captchaFacade.verifyCaptchaCode(new VerifyCaptchaCodeRequest(captcha, request.getSession().getId(), captchaToken))
-        );
     }
 }

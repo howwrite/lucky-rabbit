@@ -26,7 +26,12 @@ public class SmsCodeController {
     private final SmsCodeFacade smsCodeFacade;
 
     @GetMapping("/send")
-    public Boolean sendSmsCode(HttpServletRequest request, @RequestParam String prefix, @RequestParam String mobile, @RequestParam String sendScene) {
+    public Boolean sendSmsCode(HttpServletRequest request,
+                               @RequestParam String prefix,
+                               @RequestParam String mobile,
+                               @RequestParam String sendScene,
+                               @RequestParam String captcha,
+                               @RequestParam String captchaToken) {
         SmsCodeSceneEnum sceneEnum = SmsCodeSceneEnum.generate(sendScene);
         if (sceneEnum == null) {
             log.error("非法短信场景, scene:{}", sendScene);
@@ -37,7 +42,8 @@ public class SmsCodeController {
         sendSmsCodeRequest.setPrefix(prefix);
         sendSmsCodeRequest.setMobile(mobile);
         sendSmsCodeRequest.setScene(sceneEnum);
-
+        sendSmsCodeRequest.setCaptcha(captcha);
+        sendSmsCodeRequest.setCaptchaToken(captchaToken);
         return WebResultUtil.resultOrThrow(smsCodeFacade.sendSmsCode(sendSmsCodeRequest));
     }
 
