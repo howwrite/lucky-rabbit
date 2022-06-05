@@ -1,6 +1,6 @@
 package com.github.howwrite.luckyrabbit.application;
 
-import com.github.howwrite.luckyrabbit.application.config.AppProperties;
+import com.github.howwrite.luckyrabbit.domain.config.AppProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

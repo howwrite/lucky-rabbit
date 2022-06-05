@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.2</version>
+        <version>2.7.0</version>
         <relativePath/>
     </parent>
     <groupId>com.github.howwrite.luckyrabbit</groupId>
@@ -22,8 +22,11 @@
         <module>common</module>
         <module>antiseptica</module>
         <module>starter</module>
+        <module>infrastructure</module>
     </modules>
     <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <treasure-bag.version>1.0-SNAPSHOT</treasure-bag.version>
         <mybatis-starter.version>2.2.0</mybatis-starter.version>
         <redisson-spring.version>3.16.3</redisson-spring.version>
@@ -89,7 +92,17 @@
             </dependency>
             <dependency>
                 <groupId>com.github.howwrite</groupId>
-                <artifactId>treasure-web</artifactId>
+                <artifactId>treasure-adapter</artifactId>
+                <version>${treasure-bag.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.howwrite</groupId>
+                <artifactId>treasure-infrastructure</artifactId>
+                <version>${treasure-bag.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.howwrite.luckyrabbit</groupId>
+                <artifactId>infrastructure</artifactId>
                 <version>${treasure-bag.version}</version>
             </dependency>
             <dependency>
@@ -123,6 +136,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
             <optional>true</optional>
         </dependency>
     </dependencies>

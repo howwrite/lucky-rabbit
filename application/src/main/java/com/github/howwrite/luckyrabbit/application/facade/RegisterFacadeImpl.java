@@ -1,6 +1,5 @@
 package com.github.howwrite.luckyrabbit.application.facade;
 
-import com.github.howwrite.luckyrabbit.api.facade.RegisterFacade;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,5 +7,5 @@ import org.springframework.stereotype.Component;
  * @date 2021/11/25
  */
 @Component
-public class RegisterFacadeImpl implements RegisterFacade {
+public class RegisterFacadeImpl {
 }

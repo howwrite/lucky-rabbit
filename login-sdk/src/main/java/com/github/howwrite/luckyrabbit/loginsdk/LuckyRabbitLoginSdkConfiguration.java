@@ -1,6 +1,6 @@
 package com.github.howwrite.luckyrabbit.loginsdk;
 
-import com.github.howwrite.luckyrabbit.api.facade.LoginFacade;
+import com.github.howwrite.luckyrabbit.api.service.LoginService;
 import com.github.howwrite.luckyrabbit.loginsdk.config.LoginSdkProperties;
 import com.github.howwrite.luckyrabbit.loginsdk.helper.LoginSessionDecodeHelper;
 import com.github.howwrite.luckyrabbit.loginsdk.interceptor.UserInterceptor;
@@ -20,7 +20,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableConfigurationProperties(LoginSdkProperties.class)
 public class LuckyRabbitLoginSdkConfiguration implements WebMvcConfigurer {
-    private final LoginFacade loginFacade;
+    private final LoginService loginFacade;
     private final LoginSessionDecodeHelper loginSessionDecodeHelper;
 
     @Override

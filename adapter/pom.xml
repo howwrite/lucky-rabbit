@@ -22,11 +22,15 @@
 
         <dependency>
             <groupId>com.github.howwrite</groupId>
-            <artifactId>treasure-web</artifactId>
+            <artifactId>treasure-adapter</artifactId>
         </dependency>
         <dependency>
             <groupId>com.github.howwrite.luckyrabbit</groupId>
             <artifactId>api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.howwrite.luckyrabbit</groupId>
+            <artifactId>application</artifactId>
         </dependency>
         <dependency>
             <groupId>com.github.howwrite.luckyrabbit</groupId>

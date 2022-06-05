@@ -1,6 +1,5 @@
 package com.github.howwrite.luckyrabbit.application.facade;
 
-import com.github.howwrite.luckyrabbit.api.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +9,6 @@ import org.springframework.stereotype.Component;
  */
 @RequiredArgsConstructor
 @Component
-public class UserFacadeImpl implements UserFacade {
+public class UserFacadeImpl {
 
 }

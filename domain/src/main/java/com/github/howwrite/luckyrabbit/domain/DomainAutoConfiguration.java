@@ -1,11 +1,19 @@
 package com.github.howwrite.luckyrabbit.domain;
 
-import org.mybatis.spring.annotation.MapperScan;
+import com.github.howwrite.luckyrabbit.domain.endpoint.DefaultUserEndpoint;
+import com.github.howwrite.luckyrabbit.domain.endpoint.UserEndpoint;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @ComponentScan
-@MapperScan
 @Configuration
 public class DomainAutoConfiguration {
+
+    @Bean
+    @ConditionalOnMissingBean(UserEndpoint.class)
+    public UserEndpoint userEndpoint() {
+        return new DefaultUserEndpoint();
+    }
 }

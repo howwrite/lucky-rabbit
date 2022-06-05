@@ -1,7 +1,6 @@
 package com.github.howwrite.luckyrabbit.loginsdk.interceptor;
 
-import com.github.howwrite.luckyrabbit.api.facade.LoginFacade;
-import com.github.howwrite.luckyrabbit.api.request.login.FindUserByLoginTokenRequest;
+import com.github.howwrite.luckyrabbit.api.service.LoginService;
 import com.github.howwrite.luckyrabbit.loginsdk.helper.LoginSessionDecodeHelper;
 import com.github.howwrite.luckyrabbit.loginsdk.sdk.UserContext;
 import com.github.howwrite.treasure.api.response.Response;
@@ -22,21 +21,20 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 @RequiredArgsConstructor
 public class UserInterceptor implements HandlerInterceptor {
-    private final LoginFacade loginFacade;
+    private final LoginService loginFacade;
     private final LoginSessionDecodeHelper loginSessionDecodeHelper;
 
     @Override
     public boolean preHandle(@Nonnull HttpServletRequest request, @Nonnull HttpServletResponse response, @Nonnull Object handler) {
         String loginToken = loginSessionDecodeHelper.genLoginToken(request);
         if (!StringUtils.hasText(loginToken)) {
-            log.warn("current request not have login token");
+            log.info("current request not have login token");
             genLoginIllegalResponse(response);
             return false;
         }
-        FindUserByLoginTokenRequest loginRequest = new FindUserByLoginTokenRequest(loginToken);
-        Response<Long> findUserTokenResp = loginFacade.findUserIdByLoginToken(loginRequest);
+        Response<Long> findUserTokenResp = loginFacade.findUserIdByLoginToken(loginToken);
         if (!findUserTokenResp.isOk() || findUserTokenResp.getData() == null) {
-            log.warn("invoke login service error, param:{}, resp:{}", loginRequest, findUserTokenResp);
+            log.warn("invoke login service error, param:{}, resp:{}", loginToken, findUserTokenResp);
             genLoginIllegalResponse(response);
             return false;
         }

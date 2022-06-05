@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.io.Serial;
+
 /**
  * @author howwrite
  * @date 2021/10/12 8:42 上午
@@ -16,6 +18,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class GenerateCaptchaRequest extends AbstractRequest {
+    @Serial
     private static final long serialVersionUID = 4809409092045004454L;
     private String sessionId;
     private Integer width;
