@@ -17,6 +17,10 @@
             <artifactId>treasure-api</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.github.howwrite</groupId>
+            <artifactId>treasure-tools</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.github.howwrite.luckyrabbit</groupId>
             <artifactId>common</artifactId>
         </dependency>

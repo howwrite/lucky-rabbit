@@ -2,10 +2,11 @@ package com.github.howwrite.luckyrabbit.domain.valueobject;
 
 
 import cn.hutool.core.util.PhoneUtil;
-import com.github.howwrite.treasure.common.util.ParameterUtils;
 import com.github.howwrite.treasure.domain.value.AbstractValueObject;
+import com.github.howwrite.treasure.tools.utils.ParameterUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.util.StringUtils;
 
 import java.io.Serial;
 
@@ -24,7 +25,9 @@ public class Phone extends AbstractValueObject {
     public Phone(String prefix, String mobile) {
         ParameterUtils.assertTrue("请输入正确的手机号", PhoneUtil.isMobile(mobile));
         // todo 处理前缀，暂时使用86
-        prefix = "86";
+        if (!StringUtils.hasText(prefix)) {
+            prefix = "86";
+        }
         this.prefix = prefix;
         this.mobile = mobile;
     }

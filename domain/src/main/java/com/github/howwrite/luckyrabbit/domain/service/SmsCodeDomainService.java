@@ -2,11 +2,11 @@ package com.github.howwrite.luckyrabbit.domain.service;
 
 import cn.hutool.core.util.RandomUtil;
 import com.github.howwrite.luckyrabbit.common.constant.SmsCodeSceneEnum;
-import com.github.howwrite.luckyrabbit.domain.config.AppProperties;
 import com.github.howwrite.luckyrabbit.domain.model.Captcha;
 import com.github.howwrite.luckyrabbit.domain.repository.SmsCodeRepository;
 import com.github.howwrite.luckyrabbit.domain.valueobject.Phone;
 import com.github.howwrite.luckyrabbit.domain.valueobject.Session;
+import com.github.howwrite.luckyrabbit.tools.config.LuckyRabbitConfig;
 import com.github.howwrite.treasure.common.exception.ServerBizException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ public class SmsCodeDomainService {
 
     private final SmsCodeRepository smsCodeRepository;
 
-    private final AppProperties appProperties;
+    private final LuckyRabbitConfig luckyrabbitConfig;
 
     public boolean sendSmsCode(@Nonnull Captcha captcha, @Nonnull Phone phone, @Nonnull SmsCodeSceneEnum scene) {
         // 校验图形验证码
@@ -39,7 +39,7 @@ public class SmsCodeDomainService {
     }
 
     private String genSmsCode(Session session, Phone phone, SmsCodeSceneEnum scene) {
-        int smsCodeLiveMinute = appProperties.getSmsCodeLiveMinute();
+        int smsCodeLiveMinute = luckyrabbitConfig.getSmsCodeLiveMinute();
         // 首先查询是否当前用户是否已经存在短信验证码
         String existSmCode = smsCodeRepository.findSmsCode(session, phone, scene, smsCodeLiveMinute);
         if (existSmCode != null) {
@@ -47,7 +47,7 @@ public class SmsCodeDomainService {
             return existSmCode;
         }
         // 不存在则生成后绑定
-        String smsCode = RandomUtil.randomNumbers(appProperties.getSmsCodeLength());
+        String smsCode = RandomUtil.randomNumbers(luckyrabbitConfig.getSmsCodeLength());
         boolean bindResult = smsCodeRepository.bindSmsCode(session, phone, scene, smsCode, smsCodeLiveMinute);
         if (!bindResult) {
             log.error("bind sms code error, sessionId:{}, mobile:{}, smsCodeScene:{}, smsCode:{}", session, phone, scene, smsCode);

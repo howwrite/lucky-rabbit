@@ -2,12 +2,12 @@ package com.github.howwrite.luckyrabbit.domain.service;
 
 import cn.hutool.core.util.RandomUtil;
 import com.github.howwrite.luckyrabbit.common.constant.SmsCodeSceneEnum;
-import com.github.howwrite.luckyrabbit.domain.config.AppProperties;
 import com.github.howwrite.luckyrabbit.domain.model.User;
 import com.github.howwrite.luckyrabbit.domain.repository.LoginRepository;
 import com.github.howwrite.luckyrabbit.domain.valueobject.LoginFactor;
 import com.github.howwrite.luckyrabbit.domain.valueobject.Phone;
 import com.github.howwrite.luckyrabbit.domain.valueobject.Session;
+import com.github.howwrite.luckyrabbit.tools.config.LuckyRabbitConfig;
 import com.github.howwrite.treasure.common.exception.ServerBizException;
 import com.github.howwrite.treasure.common.exception.ServerException;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ import javax.annotation.Resource;
 @Service
 @RequiredArgsConstructor
 public class LoginDomainService {
-    private final AppProperties appProperties;
+    private final LuckyRabbitConfig luckyrabbitConfig;
     private final LoginRepository loginRepository;
     @Resource
     private SmsCodeDomainService smsCodeDomainService;
@@ -48,7 +48,7 @@ public class LoginDomainService {
      */
     public LoginFactor bindLoginStatus(Long userId) {
         String token = genLoginToken(userId);
-        int loginStatusLiveToHour = appProperties.getLoginStatusLiveToHour();
+        int loginStatusLiveToHour = luckyrabbitConfig.getLoginStatusLiveToHour();
         boolean bindResult = loginRepository.bindLoginToken(token, userId, loginStatusLiveToHour);
         if (!bindResult) {
             log.error("bind login token error, token:{}, userId:{}", token, userId);

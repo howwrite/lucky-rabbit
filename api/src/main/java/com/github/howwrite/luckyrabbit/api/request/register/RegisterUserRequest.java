@@ -1,10 +1,12 @@
 package com.github.howwrite.luckyrabbit.api.request.register;
 
-import com.github.howwrite.luckyrabbit.api.constant.UserErrorCode;
+import com.github.howwrite.luckyrabbit.common.constant.UserErrorCode;
 import com.github.howwrite.treasure.api.request.AbstractRequest;
-import com.github.howwrite.treasure.common.util.ParameterUtils;
+import com.github.howwrite.treasure.tools.utils.ParameterUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serial;
 
 /**
  * @author howwrite
@@ -13,6 +15,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class RegisterUserRequest extends AbstractRequest {
+    @Serial
     private static final long   serialVersionUID = -4713392797268782128L;
     /**
      * 密码

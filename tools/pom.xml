@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>lucky-rabbit</artifactId>
@@ -9,28 +9,16 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>application</artifactId>
+    <artifactId>tools</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>com.github.howwrite.luckyrabbit</groupId>
-            <artifactId>api</artifactId>
+            <groupId>com.github.howwrite</groupId>
+            <artifactId>treasure-tools</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.howwrite</groupId>
-            <artifactId>treasure-application</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.howwrite.luckyrabbit</groupId>
-            <artifactId>domain</artifactId>
         </dependency>
         <dependency>
             <groupId>com.github.howwrite</groupId>

@@ -1,7 +1,7 @@
 package com.github.howwrite.luckyrabbit.api.request.login;
 
 import com.github.howwrite.treasure.api.request.AbstractRequest;
-import com.github.howwrite.treasure.common.util.ParameterUtils;
+import com.github.howwrite.treasure.tools.utils.ParameterUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

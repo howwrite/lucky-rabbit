@@ -23,47 +23,56 @@
         <module>antiseptica</module>
         <module>starter</module>
         <module>infrastructure</module>
+        <module>tools</module>
     </modules>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <treasure-bag.version>1.0-SNAPSHOT</treasure-bag.version>
         <mybatis-starter.version>2.2.0</mybatis-starter.version>
         <redisson-spring.version>3.16.3</redisson-spring.version>
         <druid-version>1.2.8</druid-version>
         <mysql-connector.version>8.0.27</mysql-connector.version>
+        <!--单独定义是防止依赖包的treasure-bag.version冲突-->
+        <luckyrabbit.version>1.0-SNAPSHOT</luckyrabbit.version>
     </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.github.howwrite.luckyrabbit</groupId>
                 <artifactId>login-sdk</artifactId>
-                <version>${project.version}</version>
+                <version>${luckyrabbit.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.howwrite.luckyrabbit</groupId>
                 <artifactId>adapter</artifactId>
-                <version>${project.version}</version>
+                <version>${luckyrabbit.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.howwrite.luckyrabbit</groupId>
                 <artifactId>api</artifactId>
-                <version>${project.version}</version>
+                <version>${luckyrabbit.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.howwrite.luckyrabbit</groupId>
                 <artifactId>application</artifactId>
-                <version>${project.version}</version>
+                <version>${luckyrabbit.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.howwrite.luckyrabbit</groupId>
                 <artifactId>common</artifactId>
-                <version>${project.version}</version>
+                <version>${luckyrabbit.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.howwrite.luckyrabbit</groupId>
                 <artifactId>domain</artifactId>
-                <version>${project.version}</version>
+                <version>${luckyrabbit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.howwrite.luckyrabbit</groupId>
+                <artifactId>tools</artifactId>
+                <version>${luckyrabbit.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.howwrite</groupId>
@@ -87,7 +96,7 @@
             </dependency>
             <dependency>
                 <groupId>com.github.howwrite</groupId>
-                <artifactId>treasure-server</artifactId>
+                <artifactId>treasure-application</artifactId>
                 <version>${treasure-bag.version}</version>
             </dependency>
             <dependency>
@@ -98,6 +107,11 @@
             <dependency>
                 <groupId>com.github.howwrite</groupId>
                 <artifactId>treasure-infrastructure</artifactId>
+                <version>${treasure-bag.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.howwrite</groupId>
+                <artifactId>treasure-tools</artifactId>
                 <version>${treasure-bag.version}</version>
             </dependency>
             <dependency>

@@ -27,5 +27,9 @@
             <groupId>com.github.howwrite.luckyrabbit</groupId>
             <artifactId>common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.howwrite.luckyrabbit</groupId>
+            <artifactId>tools</artifactId>
+        </dependency>
     </dependencies>
 </project>

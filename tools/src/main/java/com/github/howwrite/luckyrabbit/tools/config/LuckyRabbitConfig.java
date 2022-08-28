@@ -1,4 +1,4 @@
-package com.github.howwrite.luckyrabbit.domain.config;
+package com.github.howwrite.luckyrabbit.tools.config;
 
 import com.github.howwrite.treasure.properties.helper.BaseProperties;
 import lombok.Data;
@@ -7,8 +7,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@ConfigurationProperties(prefix = "lucky-rabbit.app")
-public class AppProperties extends BaseProperties {
+@ConfigurationProperties(prefix = "lucky-rabbit")
+public class LuckyRabbitConfig extends BaseProperties {
     /**
      * 图片验证码字符串长度
      */

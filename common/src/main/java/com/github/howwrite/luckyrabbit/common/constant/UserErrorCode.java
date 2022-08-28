@@ -1,4 +1,4 @@
-package com.github.howwrite.luckyrabbit.api.constant;
+package com.github.howwrite.luckyrabbit.common.constant;
 
 /**
  * @author howwrite

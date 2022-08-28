@@ -1,7 +1,7 @@
 package com.github.howwrite.luckyrabbit.domain.valueobject;
 
-import com.github.howwrite.treasure.common.util.ParameterUtils;
 import com.github.howwrite.treasure.domain.value.AbstractValueObject;
+import com.github.howwrite.treasure.tools.utils.ParameterUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
