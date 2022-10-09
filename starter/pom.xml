@@ -18,15 +18,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.howwrite.luckyrabbit</groupId>
-            <artifactId>application</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.howwrite.luckyrabbit</groupId>
             <artifactId>infrastructure</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>

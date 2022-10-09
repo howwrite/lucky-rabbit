@@ -1,6 +1,7 @@
 package com.github.howwrite.luckyrabbit.loginsdk;
 
 import com.github.howwrite.luckyrabbit.api.service.LoginService;
+import com.github.howwrite.luckyrabbit.api.service.UserService;
 import com.github.howwrite.luckyrabbit.loginsdk.config.LoginSdkProperties;
 import com.github.howwrite.luckyrabbit.loginsdk.helper.LoginSessionDecodeHelper;
 import com.github.howwrite.luckyrabbit.loginsdk.interceptor.UserInterceptor;
@@ -23,10 +24,16 @@ public class LuckyRabbitLoginSdkConfiguration implements WebMvcConfigurer {
     private final LoginService loginFacade;
     private final LoginSessionDecodeHelper loginSessionDecodeHelper;
 
+    private final UserService userService;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new UserInterceptor(loginFacade, loginSessionDecodeHelper))
+        registry.addInterceptor(new UserInterceptor(loginFacade, loginSessionDecodeHelper, userService))
                 .addPathPatterns("/api/**")
-                .excludePathPatterns("/api/login/by-sms-code", "/api/sms/send", "/api/captcha/**");
+                .excludePathPatterns(
+                        "/api/login/by-sms-code",
+                        "/api/sms/send",
+                        "/api/captcha/**",
+                        "/api/system/support-mobile-prefix");
     }
 }

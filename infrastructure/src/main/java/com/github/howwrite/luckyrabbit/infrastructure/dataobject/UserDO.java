@@ -1,6 +1,6 @@
 package com.github.howwrite.luckyrabbit.infrastructure.dataobject;
 
-import com.github.howwrite.luckyrabbit.domain.model.User;
+import com.github.howwrite.luckyrabbit.domain.miap.user.model.User;
 import com.github.howwrite.luckyrabbit.domain.valueobject.Phone;
 import com.github.howwrite.treasure.infrastructure.value.AbstractDO;
 import lombok.Data;
@@ -15,7 +15,7 @@ import java.io.Serial;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class UserDO extends AbstractDO<Long> {
+public class UserDO extends AbstractDO {
     @Serial
     private static final long serialVersionUID = -5928709396881136757L;
     /**
@@ -26,6 +26,10 @@ public class UserDO extends AbstractDO<Long> {
      * 手机号
      */
     private String mobile;
+    /**
+     * 头像地址
+     */
+    private String avatarUrl;
     /**
      * 手机号前缀
      */
@@ -47,10 +51,10 @@ public class UserDO extends AbstractDO<Long> {
     }
 
     public @Nonnull User build2Domain() {
-        User user = new User();
+        User user = new User(new Phone(prefix, mobile));
         user.setNickname(nickname);
         user.setPassword(password);
-        user.setPhone(new Phone(prefix, mobile));
+        user.setId(getId());
         return user;
     }
 }

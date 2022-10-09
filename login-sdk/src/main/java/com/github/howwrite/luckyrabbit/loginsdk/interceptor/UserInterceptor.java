@@ -1,6 +1,9 @@
 package com.github.howwrite.luckyrabbit.loginsdk.interceptor;
 
+import com.github.howwrite.luckyrabbit.api.request.user.UserQueryParam;
+import com.github.howwrite.luckyrabbit.api.response.user.UserDTO;
 import com.github.howwrite.luckyrabbit.api.service.LoginService;
+import com.github.howwrite.luckyrabbit.api.service.UserService;
 import com.github.howwrite.luckyrabbit.loginsdk.helper.LoginSessionDecodeHelper;
 import com.github.howwrite.luckyrabbit.loginsdk.sdk.UserContext;
 import com.github.howwrite.treasure.api.response.Response;
@@ -21,8 +24,10 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 @RequiredArgsConstructor
 public class UserInterceptor implements HandlerInterceptor {
-    private final LoginService loginFacade;
+    private final LoginService loginService;
     private final LoginSessionDecodeHelper loginSessionDecodeHelper;
+
+    private final UserService userService;
 
     @Override
     public boolean preHandle(@Nonnull HttpServletRequest request, @Nonnull HttpServletResponse response, @Nonnull Object handler) {
@@ -32,13 +37,21 @@ public class UserInterceptor implements HandlerInterceptor {
             genLoginIllegalResponse(response);
             return false;
         }
-        Response<Long> findUserTokenResp = loginFacade.findUserIdByLoginToken(loginToken);
-        if (!findUserTokenResp.isOk() || findUserTokenResp.getData() == null) {
-            log.warn("invoke login service error, param:{}, resp:{}", loginToken, findUserTokenResp);
+        Response<Long> findUserTokenResp = loginService.findUserIdByLoginToken(loginToken);
+        Long userId = findUserTokenResp.getData();
+        if (!findUserTokenResp.isOk() || userId == null) {
+            log.warn("根据token查询用户id失败, param:{}, resp:{}", loginToken, findUserTokenResp);
             genLoginIllegalResponse(response);
             return false;
         }
-        UserContext.setCurrentUserId(findUserTokenResp.getData());
+        Response<UserDTO> userResp = userService.findLegalUser(new UserQueryParam(userId));
+        UserDTO userDTO = userResp.getData();
+        if (!userResp.isOk() || userDTO == null) {
+            log.warn("用户id不合法, 用户id:{}, resp:{}", userId, userResp);
+            genLoginIllegalResponse(response);
+            return false;
+        }
+        UserContext.setCurrentUserId(userDTO);
         return true;
     }
 

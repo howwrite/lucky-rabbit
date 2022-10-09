@@ -81,6 +81,11 @@
             </dependency>
             <dependency>
                 <groupId>com.github.howwrite</groupId>
+                <artifactId>miap</artifactId>
+                <version>${treasure-bag.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.howwrite</groupId>
                 <artifactId>properties-helper</artifactId>
                 <version>${treasure-bag.version}</version>
             </dependency>

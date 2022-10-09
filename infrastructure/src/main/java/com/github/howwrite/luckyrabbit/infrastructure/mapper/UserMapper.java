@@ -1,6 +1,6 @@
 package com.github.howwrite.luckyrabbit.infrastructure.mapper;
 
-import com.github.howwrite.luckyrabbit.domain.queryobject.UserQuery;
+import com.github.howwrite.luckyrabbit.domain.miap.user.model.UserQuery;
 import com.github.howwrite.luckyrabbit.infrastructure.dataobject.UserDO;
 import org.apache.ibatis.annotations.Mapper;
 

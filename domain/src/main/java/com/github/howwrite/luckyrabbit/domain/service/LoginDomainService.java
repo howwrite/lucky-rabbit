@@ -2,7 +2,7 @@ package com.github.howwrite.luckyrabbit.domain.service;
 
 import cn.hutool.core.util.RandomUtil;
 import com.github.howwrite.luckyrabbit.common.constant.SmsCodeSceneEnum;
-import com.github.howwrite.luckyrabbit.domain.model.User;
+import com.github.howwrite.luckyrabbit.domain.miap.user.model.User;
 import com.github.howwrite.luckyrabbit.domain.repository.LoginRepository;
 import com.github.howwrite.luckyrabbit.domain.valueobject.LoginFactor;
 import com.github.howwrite.luckyrabbit.domain.valueobject.Phone;
