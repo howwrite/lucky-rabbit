@@ -1,5 +1,7 @@
 package com.github.howwrite.luckyrabbit.domain.miap;
 
+import com.github.howwrite.luckyrabbit.domain.miap.avatar.node.GetAvatarTemplateNode;
+import com.github.howwrite.luckyrabbit.domain.miap.avatar.node.ListAvatarTemplateNode;
 import com.github.howwrite.luckyrabbit.domain.miap.user.node.FindUserByIdNode;
 import com.github.howwrite.luckyrabbit.domain.miap.user.node.JudgeLegalUserNode;
 import com.github.howwrite.luckyrabbit.domain.miap.user.node.JudgeUserFindParamNode;
@@ -16,6 +18,21 @@ public class MiapConfiguration {
                 JudgeUserFindParamNode.class,
                 FindUserByIdNode.class,
                 JudgeLegalUserNode.class
+        ));
+    }
+
+    @Bean
+    public MiapBookShelf listAvatarTemplate() {
+        return new MiapBookShelf(MiapPipelineKeyEnum.List_AVATAR_TEMPLATE.name(), Lists.newArrayList(
+                ListAvatarTemplateNode.class
+        ));
+    }
+
+
+    @Bean
+    public MiapBookShelf getAvatarTemplate() {
+        return new MiapBookShelf(MiapPipelineKeyEnum.GET_AVATAR_TEMPLATE.name(), Lists.newArrayList(
+                GetAvatarTemplateNode.class
         ));
     }
 }

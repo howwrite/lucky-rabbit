@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.howwrite.luckyrabbit.infrastructure.mapper.AvatarTemplateMapper">
+    <resultMap type="com.github.howwrite.luckyrabbit.infrastructure.dataobject.AvatarTemplateDO" id="ResultMap">
+        <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="body" column="body" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="deleted" column="deleted" jdbcType="BIGINT"/>
+        <result property="deletedTime" column="deleted_time" jdbcType="TIMESTAMP_WITH_TIMEZONE"/>
+        <result property="createdTime" column="created_time" jdbcType="TIMESTAMP_WITH_TIMEZONE"/>
+        <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP_WITH_TIMEZONE"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id,name,body,type,deleted,deleted_time,created_time,updated_time
+    </sql>
+
+    <sql id="tb">
+        `avatar_template`
+    </sql>
+
+    <sql id="criteria">
+        <where>
+            deleted = 0
+            <if test="name != null">and name = #{name}</if>
+        </where>
+    </sql>
+    <select id="list" resultMap="ResultMap"
+            parameterType="com.github.howwrite.luckyrabbit.domain.miap.avatar.model.AvatarTemplateQuery">
+        select
+        <include refid="baseColumn"/>
+        from
+        <include refid="tb"/>
+        <include refid="criteria"/>
+        order by id desc
+        <if test="offset != null and limit != null">
+            limit #{limit} offset #{offset}
+        </if>
+    </select>
+    <select id="get" resultMap="ResultMap"
+            parameterType="com.github.howwrite.luckyrabbit.domain.miap.avatar.model.AvatarTemplateQuery">
+        select
+        <include refid="baseColumn"/>
+        from
+        <include refid="tb"/>
+        <include refid="criteria"/>
+        limit 1
+    </select>
+</mapper>
